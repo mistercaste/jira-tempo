@@ -1,4 +1,4 @@
-# jira-tempo
+# Jira/Tempo Automation
 Automates the compilation of TEMPO time-sheets.
 How? Specify some ticket numbers in `tickets.txt` and it will randomly pick them to populate the requested time interval in Jira TEMPO.
 Pick the ticket numbers from your _Time Tracking_ project (e.g. BLAH-xxx). See below a sample Jira query to retrieve them:
@@ -29,15 +29,18 @@ sudo docker run --rm \
 
 #### Code configurations
 You'll need to hard-code some parameters (sorry, didn't find the time to parameterized them for general purpose usage)
-* resources.robot
-  ** JIRA_URL
-  ** Potentially the script, depending on your IT dept. configuration
-* run.sh
-  ** TIMEZONE : must match your _CloudBees CI_
-  ** CONTAINER_IMAGE : set to your registry hub
-* openshift.yml
-  ** spec/imagePullSecrets
-  ** containers/image (both _robotframework_ and _jnlp_ containers)
+
+resources.robot
+* JIRA_URL
+* Potentially the script, depending on your IT dept. configuration
+
+run.sh
+* TIMEZONE : must match your _CloudBees CI_
+* CONTAINER_IMAGE : set to your registry hub
+
+openshift.yml
+* spec/imagePullSecrets
+* containers/image (both _robotframework_ and _jnlp_ containers)
 
 #### Email Notifications
 In order to enable the email notifications, please add into `Jenkins -> Configure System -> Extended Email Notifications` the values below:
