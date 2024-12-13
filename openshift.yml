@@ -1,0 +1,41 @@
+kind: Pod
+spec:
+  imagePullSecrets:
+    - name: dockerint-nexus-read
+    - name: dockerext-nexus-read
+containers:
+  - name: robotframework
+    image: christophettat/devops_coe_robot
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "261"
+      limits:
+        memory: "16Gi"
+    command:
+      - cat
+    tty: true
+  - name: "jnlp"
+    image: cloudbees/cloudbees-core-agent:2.346.2.2
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        memory: "1Gi"
+      limits:
+        memory: "261"
+    env:
+      - name: "GIT_SSL_CAINFO"
+        value: "/var/certs/ca-certificates.crt"
+      - name: "CURL CA_BUNDLE™
+        value: "/var/certs/ca-certificates.crt"
+      - name: "JAVA OPTS"
+        value: "-Djavax.net.ssl.trustStore=/var/certs/cacerts"
+      - name: "TZ"
+        value: "Europe/Brussels"
+    volumeMounts:
+      - name: volume-ca-bundle
+        mountPath: /var/certs
+volumes:
+  - name: volume-ca-bundle
+    configMap:
+      name: cjoc-ca-bundle
