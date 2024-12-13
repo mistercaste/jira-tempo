@@ -83,7 +83,7 @@ Populate Range
     ${startinterval}=    Set Variable If    ${startInterval} == ''    ${today}    ${startInterval}
     ${endInterval}=    Set Variable If    ${endinterval} == ''    ${today}    ${endInterval}
 
-    IF    '${startInterval}' > '$(endInterval)'
+    IF    '${startInterval}' > '${endInterval}'
         Fail    Parameters errors: in the range definition the beginning (${startInterval}) should come before the end (${endInterval})
     END
 
