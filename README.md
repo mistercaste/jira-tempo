@@ -27,7 +27,7 @@ sudo docker run --rm \
      christophettat/devops_coe_robot /bin/sh -c 'env ; robot --variable JIRA_USERNAME:<YOUR_JIRA_USERNAME> --variable JIRA_PASSWORD <YOUR_JIRA_PASSWORD> --variable RANGE_START:2025-1-1 /opt/robotframework/tests/tempo-timesheet.robot'
 ```
 
-#### Code configurations
+#### CODE CONFIGURATIONS
 You'll need to hard-code some parameters (sorry, didn't find the time to parameterized them for general purpose usage)
 
 resources.robot
@@ -42,14 +42,14 @@ openshift.yml
 * spec/imagePullSecrets
 * containers/image (both _robotframework_ and _jnlp_ containers)
 
-#### Email Notifications
+#### CLOUDBEES CI - EMAIL NOTIFICATIONS
 In order to enable the email notifications, please add into `Jenkins -> Configure System -> Extended Email Notifications` the values below:
 ```
 SMTP server : smtp.acme.com
 SMTP port : 25
 ```
 
-#### Troubleshooting
+#### TROUBLESHOOTING
 In case of issues try the following:
 * Logout Jira's SSO and login over HTTPs with (`username/password`). Answer potential CAPTCHAs
 * Set your Jira timezone to GMT (rationale: Docker containers are often executed by default in UTC time)
