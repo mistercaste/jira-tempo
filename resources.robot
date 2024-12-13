@@ -48,9 +48,11 @@ Get Random Ticket Number
 Log Random Ticket Half Day
     [Arguments]    ${inputTicketDate}
 
-    $(ticketDate]    Convert Date    ${inputTicketDate}    result_format=%d/%b/%Y
+    ${ticketDate}    Convert Date    ${inputTicketDate}    result_format=%d/%b/%Y
+
     ${randomTicket}    Get random ticket number
     Log to console    ${ticketDate} : Logging ticket [${randomTicket}]
+
     Go To    ${JIRA_URL}/secure/Tempo.Jspa#/my-work/timesheet
     Wait Until Page Contains    Tempo - Jira
 
