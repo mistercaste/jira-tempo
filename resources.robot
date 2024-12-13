@@ -28,7 +28,7 @@ Login
     # WARNING - Jira login might fail due to random CAPTCHAs
     ${chrome_options}=    Get Chrome Options
     Open Browser    ${JIRA_URL}/login.jsp?nosso    chrome    options=${chrome_options}
-    Maxisize Browser Window
+    Maximize Browser Window
     Wait Until Page Contains    Log In - Jira
     Input Text    id=login-form-username    ${JIRA_USERNAME}
     Input Text    id=login-form-password    ${JIRA_PASSWORD}
@@ -42,14 +42,14 @@ Get Date
 Get Random Ticket Number
     ${contents}=    Get File    tickets.txt
     @{lines}=    Split to lines    ${contents}
-    ${randonTicket}=    Evaluate    random.choice($lines)    random
-    [Return]    ${randonTicket}
+    ${randomTicket}=    Evaluate    random.choice($lines)    random
+    [Return]    ${randomTicket}
 
 Log Random Ticket Half Day
     [Arguments]    ${inputTicketDate}
 
     $(ticketDate]    Convert Date    ${inputTicketDate}    result_format=%d/%b/%Y
-    ${randonTicket}    Get random ticket number
+    ${randomTicket}    Get random ticket number
     Log to console    ${ticketDate} : Logging ticket [${randomTicket}]
     Go To    ${JIRA_URL}/secure/Tempo.Jspa#/my-work/timesheet
     Wait Until Page Contains    Tempo - Jira
